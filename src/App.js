@@ -149,7 +149,7 @@ export default function App() {
     setStep(step + 1);
   }
 
-  function showError() {
+  function handleError() {
     setError(true);
   }
 
@@ -158,10 +158,10 @@ export default function App() {
   return (
     <Steps currentStep={step}>
       <TutorialFrontId onSuccess={goNext} />
-      <FrontId session={session} onSuccess={goNext} showError={showError} />
-      <BackId session={session} onSuccess={goNext} showError={showError} />
+      <FrontId session={session} onSuccess={goNext} showError={handleError} />
+      <BackId session={session} onSuccess={goNext} showError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
-      <Selfie session={session} onSuccess={goNext} showError={showError} />
+      <Selfie session={session} onSuccess={goNext} showError={handleError} />
     </Steps>
   );
 }
