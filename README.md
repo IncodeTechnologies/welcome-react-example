@@ -30,6 +30,16 @@ or
 $ npm install
 ```
 
+### Add env variables
+
+First copy the .env.example
+
+```bash
+cp .env.example .env.local
+```
+
+and then write the correct variables (Ask support for help)
+
 ### Start the app
 
 ```
@@ -42,20 +52,9 @@ or you can use
 $ npm start
 ```
 
-### Add env variables
-
-First copy the .env.example
-
-```bash
-cp .env.example .env.local
-```
-
-and then write the correct variables (Ask support for help)
-
 ## Tech Stack
 
 - React - library for user interfaces creation
-- SCSS - css preprocessor
 - RCA - React boilerplate
 
 ## Getting Started with Create React App
