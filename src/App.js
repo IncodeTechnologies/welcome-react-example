@@ -73,6 +73,8 @@ function Selfie({ session, onSuccess, showError }) {
   return <div ref={containerRef}></div>;
 }
 
+// Use Conference if you need it
+// eslint-disable-next-line no-unused-vars
 function Conference({ session, onSuccess, showError }) {
   const [status, setStatus] = useState();
   const containerRef = useRef();
@@ -103,6 +105,8 @@ function Conference({ session, onSuccess, showError }) {
   return <div ref={containerRef}></div>;
 }
 
+// Use VideoSelfie if you need it
+// eslint-disable-next-line no-unused-vars
 function VideoSelfie({ session, onSuccess, showError }) {
   const containerRef = useRef();
 
