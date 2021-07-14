@@ -15,7 +15,7 @@ brew install node
 ### Clone the repo
 
 ```
-git clone git@github.com:IncodeTechnologies/ms-incodesmile-web.git
+git clone git@github.com:IncodeTechnologies/welcome-react-example.git
 ```
 
 ### Install node dependencies
