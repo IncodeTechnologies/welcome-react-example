@@ -9,25 +9,25 @@ You need to have the following services installed in your computer:
 ### Mac OS
 
 ```
-$ brew install node
+brew install node
 ```
 
 ### Clone the repo
 
 ```
-$ git clone git@github.com:IncodeTechnologies/ms-incodesmile-web.git
+git clone git@github.com:IncodeTechnologies/ms-incodesmile-web.git
 ```
 
 ### Install node dependencies
 
 ```
-$ yarn
+yarn
 ```
 
 or
 
 ```
-$ npm install
+npm install
 ```
 
 ### Add env variables
@@ -43,13 +43,19 @@ and then write the correct variables (Ask support for help)
 ### Start the app
 
 ```
-$ yarn start
+yarn start
 ```
 
 or you can use
 
 ```
-$ npm start
+npm start
+```
+
+### Production Build
+
+```
+yarn build
 ```
 
 ## Tech Stack
