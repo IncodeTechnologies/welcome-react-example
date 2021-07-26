@@ -27,6 +27,7 @@ function FrontId({ session, onSuccess, showError }) {
       onError: showError,
       token: session,
       numberOfTries: -1,
+      showTutorial: true,
     });
   }, [onSuccess, showError, session]);
 
@@ -42,6 +43,7 @@ function BackId({ session, onSuccess, showError }) {
       onError: showError,
       token: session,
       numberOfTries: -1,
+      showTutorial: true,
     });
   }, [onSuccess, showError, session]);
 
@@ -67,6 +69,7 @@ function Selfie({ session, onSuccess, showError }) {
       onError: showError,
       token: session,
       numberOfTries: 3,
+      showTutorial: true,
     });
   }, [onSuccess, showError, session]);
 
@@ -157,7 +160,6 @@ export default function App() {
   if (error) return "Error!";
   return (
     <Steps currentStep={step}>
-      <TutorialFrontId onSuccess={goNext} />
       <FrontId session={session} onSuccess={goNext} showError={handleError} />
       <BackId session={session} onSuccess={goNext} showError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
