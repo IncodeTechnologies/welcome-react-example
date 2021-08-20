@@ -5,15 +5,16 @@ import Steps from "./Steps";
 import "./index.css";
 import incode from "./incode";
 
-function TutorialFrontId({ token, onSuccess }) {
+function TutorialFrontId({ session, onSuccess }) {
   const containerRef = useRef();
 
   useEffect(() => {
     incode.renderFrontTutorial(containerRef.current, {
       onSuccess,
       noWait: true,
+      token: session,
     });
-  }, [onSuccess]);
+  }, [onSuccess, session]);
 
   return <div ref={containerRef}></div>;
 }
@@ -27,9 +28,22 @@ function FrontId({ session, onSuccess, showError }) {
       onError: showError,
       token: session,
       numberOfTries: -1,
-      showTutorial: true,
     });
   }, [onSuccess, showError, session]);
+
+  return <div ref={containerRef}></div>;
+}
+
+function TutorialBackId({ session, onSuccess }) {
+  const containerRef = useRef();
+
+  useEffect(() => {
+    incode.renderBackTutorial(containerRef.current, {
+      onSuccess,
+      noWait: true,
+      token: session,
+    });
+  }, [onSuccess, session]);
 
   return <div ref={containerRef}></div>;
 }
@@ -43,7 +57,6 @@ function BackId({ session, onSuccess, showError }) {
       onError: showError,
       token: session,
       numberOfTries: -1,
-      showTutorial: true,
     });
   }, [onSuccess, showError, session]);
 
@@ -142,10 +155,14 @@ export default function App() {
   const [step, setStep] = useState(0);
   const [error, setError] = useState(false);
   useEffect(() => {
-    incode.createSession("ALL").then(async (session) => {
-      await incode.warmup();
-      setSession(session);
-    });
+    incode
+      .createSession("ALL", null, {
+        configurationId: "611e9fd3cb91720019029ac9",
+      })
+      .then(async (session) => {
+        await incode.warmup();
+        setSession(session);
+      });
   }, []);
 
   function goNext() {
@@ -160,7 +177,9 @@ export default function App() {
   if (error) return "Error!";
   return (
     <Steps currentStep={step}>
+      <TutorialFrontId session={session} onSuccess={goNext} />
       <FrontId session={session} onSuccess={goNext} showError={handleError} />
+      <TutorialBackId session={session} onSuccess={goNext} />
       <BackId session={session} onSuccess={goNext} showError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
       <Selfie session={session} onSuccess={goNext} showError={handleError} />
