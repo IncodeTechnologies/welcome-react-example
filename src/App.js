@@ -155,14 +155,10 @@ export default function App() {
   const [step, setStep] = useState(0);
   const [error, setError] = useState(false);
   useEffect(() => {
-    incode
-      .createSession("ALL", null, {
-        configurationId: "611e9fd3cb91720019029ac9",
-      })
-      .then(async (session) => {
-        await incode.warmup();
-        setSession(session);
-      });
+    incode.createSession("ALL").then(async (session) => {
+      await incode.warmup();
+      setSession(session);
+    });
   }, []);
 
   function goNext() {
