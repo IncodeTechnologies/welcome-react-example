@@ -157,7 +157,7 @@ function ResetPermissions({ onTryAgain }) {
       <h1>Follow the next steps:</h1>
       <ul>
         <li>
-          <span className="number">1</span> <p>Tap the 3 dotes</p>{" "}
+          <span className="number">1</span> <p>Tap the 3 dots</p>{" "}
           <img className="three-dots" alt="three dots" src={threeDots} />
           <img
             className="arrow-up"
