@@ -43,13 +43,13 @@ and then write the correct variables (Ask support for help)
 ### Start the app
 
 ```
-yarn start
+HTTPS=true yarn start
 ```
 
 or you can use
 
 ```
-npm start
+HTTPS=true npm start
 ```
 
 ### Production Build
