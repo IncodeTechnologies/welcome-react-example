@@ -236,6 +236,15 @@ export default function App() {
       <BackId session={session} onSuccess={goNext} onError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
       <Selfie session={session} onSuccess={goNext} onError={handleError} />
+      <div>
+        <h1
+          style={{
+            textAlign: "center",
+          }}
+        >
+          You finished the onboarding process
+        </h1>
+      </div>
     </Steps>
   );
 }
