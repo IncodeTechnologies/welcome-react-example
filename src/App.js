@@ -1,5 +1,5 @@
 // check public/index.html
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useMemo } from "react";
 import Steps from "./Steps";
 
 import "./index.css";
@@ -214,18 +214,31 @@ function RetrySteps({ session, onSuccess, onError }) {
   return <div ref={containerRef}></div>;
 }
 
+export function useQuery() {
+  return useMemo(() => new URLSearchParams(window.location.search), []);
+}
+
 export default function App() {
   const [session, setSession] = useState();
   const [step, setStep] = useState(0);
   const [error, setError] = useState(false);
   const permissionsState = usePermissions();
   const [resetPermissions, setResetPermissions] = useState(false);
+
+  const queryParams = useQuery();
+
   useEffect(() => {
-    incode.createSession("ALL").then(async (session) => {
-      await incode.warmup();
-      setSession(session);
-    });
-  }, []);
+    const flowId = queryParams.get("flowId");
+
+    incode
+      .createSession("ALL", null, {
+        configurationId: flowId,
+      })
+      .then(async (session) => {
+        await incode.warmup();
+        setSession(session);
+      });
+  }, [queryParams]);
 
   useEffect(() => {
     // if permissions are denied from start, let's show the reset permissions screen
