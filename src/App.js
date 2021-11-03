@@ -195,6 +195,25 @@ function ResetPermissions({ onTryAgain }) {
   );
 }
 
+function RetrySteps({ session, onSuccess, onError }) {
+  const containerRef = useRef();
+
+  useEffect(() => {
+    incode.renderRetrySteps(
+      containerRef.current,
+      {
+        token: session,
+      },
+      {
+        onSuccess,
+        onError,
+      }
+    );
+  }, [onSuccess, onError, session]);
+
+  return <div ref={containerRef}></div>;
+}
+
 export default function App() {
   const [session, setSession] = useState();
   const [step, setStep] = useState(0);
@@ -236,6 +255,7 @@ export default function App() {
       <BackId session={session} onSuccess={goNext} onError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
       <Selfie session={session} onSuccess={goNext} onError={handleError} />
+      <RetrySteps session={session} onSuccess={goNext} onError={handleError} />
       <div>
         <h1
           style={{
