@@ -268,7 +268,12 @@ export default function App() {
       <BackId session={session} onSuccess={goNext} onError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
       <Selfie session={session} onSuccess={goNext} onError={handleError} />
-      <RetrySteps session={session} onSuccess={goNext} onError={handleError} />
+      <RetrySteps
+        session={session}
+        numberOfTries={3}
+        onSuccess={goNext}
+        onError={handleError}
+      />
       <div>
         <h1
           style={{
