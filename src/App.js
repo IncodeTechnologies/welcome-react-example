@@ -195,7 +195,7 @@ function ResetPermissions({ onTryAgain }) {
   );
 }
 
-function RetrySteps({ session, onSuccess, onError }) {
+function RetrySteps({ session, onSuccess, onError, numberOfTries }) {
   const containerRef = useRef();
 
   useEffect(() => {
@@ -203,13 +203,14 @@ function RetrySteps({ session, onSuccess, onError }) {
       containerRef.current,
       {
         token: session,
+        numberOfTries,
       },
       {
         onSuccess,
         onError,
       }
     );
-  }, [onSuccess, onError, session]);
+  }, [onSuccess, onError, session, numberOfTries]);
 
   return <div ref={containerRef}></div>;
 }
