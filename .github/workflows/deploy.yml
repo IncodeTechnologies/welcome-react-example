@@ -11,7 +11,7 @@ jobs:
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       REACT_APP_USER_SERVER: https://stage-api.incodesmile.com
       REACT_APP_CLIENT_ID: incode
-      REACT_APP_SDK_URL: https://sdk.incode.com/sdk/onBoarding-1.39.2.js
+      REACT_APP_SDK_URL: https://sdk.incode.com/sdk/onBoarding-1.40.0.js
     steps:
       - uses: actions/checkout@v2
 
