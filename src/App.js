@@ -68,6 +68,22 @@ function Selfie({ session, onSuccess, onError }) {
   return <div ref={containerRef}></div>;
 }
 
+function FaceMatch({ session, onSuccess, onError, liveness, userExists }) {
+  const containerRef = useRef();
+
+  useEffect(() => {
+    incode.renderFaceMatch(containerRef.current, {
+      onSuccess,
+      onError,
+      token: session,
+      liveness,
+      userExists,
+    });
+  }, [onSuccess, onError, session, liveness, userExists]);
+
+  return <div ref={containerRef}></div>;
+}
+
 // Use Conference if you need it
 // eslint-disable-next-line no-unused-vars
 function Conference({ session, onSuccess, onError }) {
@@ -225,6 +241,8 @@ export default function App() {
   const [error, setError] = useState(false);
   const permissionsState = usePermissions();
   const [resetPermissions, setResetPermissions] = useState(false);
+  const [liveness, setLiveness] = useState(false);
+  const [userExists, setUserExists] = useState(false);
 
   const queryParams = useQuery();
 
@@ -268,7 +286,21 @@ export default function App() {
       <FrontId session={session} onSuccess={goNext} onError={handleError} />
       <BackId session={session} onSuccess={goNext} onError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
-      <Selfie session={session} onSuccess={goNext} onError={handleError} />
+      <Selfie
+        session={session}
+        onSuccess={(res) => {
+          setLiveness(res?.liveness);
+          setUserExists(res?.existingUser);
+          goNext();
+        }}
+        onError={handleError}
+      />
+      <FaceMatch
+        session={session}
+        onSuccess={goNext}
+        liveness={liveness}
+        userExists={userExists}
+      />
       <RetrySteps
         session={session}
         numberOfTries={3}
