@@ -68,7 +68,7 @@ function Selfie({ session, onSuccess, onError }) {
   return <div ref={containerRef}></div>;
 }
 
-function FaceMatch({ session, onSuccess, onError, liveness }) {
+function FaceMatch({ session, onSuccess, onError, liveness, userExists }) {
   const containerRef = useRef();
 
   useEffect(() => {
@@ -77,8 +77,9 @@ function FaceMatch({ session, onSuccess, onError, liveness }) {
       onError,
       token: session,
       liveness,
+      userExists,
     });
-  }, [onSuccess, onError, session, liveness]);
+  }, [onSuccess, onError, session, liveness, userExists]);
 
   return <div ref={containerRef}></div>;
 }
@@ -241,6 +242,7 @@ export default function App() {
   const permissionsState = usePermissions();
   const [resetPermissions, setResetPermissions] = useState(false);
   const [liveness, setLiveness] = useState(false);
+  const [userExists, setUserExists] = useState(false);
 
   const queryParams = useQuery();
 
@@ -288,11 +290,17 @@ export default function App() {
         session={session}
         onSuccess={(res) => {
           setLiveness(res?.liveness);
+          setUserExists(res?.existingUser);
           goNext();
         }}
         onError={handleError}
       />
-      <FaceMatch session={session} onSuccess={goNext} liveness={liveness} />
+      <FaceMatch
+        session={session}
+        onSuccess={goNext}
+        liveness={liveness}
+        userExists={userExists}
+      />
       <RetrySteps
         session={session}
         numberOfTries={3}
