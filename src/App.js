@@ -1,4 +1,3 @@
-// check public/index.html
 import { useEffect, useRef, useState, useMemo } from "react";
 import Steps from "./Steps";
 
