@@ -1205,10 +1205,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz#b520529ec21d8e5945a1851dfd1c32e94e39ff45"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@incodetech/welcome@^1.42.9":
-  version "1.42.9"
-  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.42.9.tgz#132b478659b40d5e7c5d52fa15eb9ab0f151466b"
-  integrity sha512-vJ091UtoRT5utDndolyZs9xRhvloJhL8nAadOhcprYvHgSI3Mf6EGI9h4NWioXRqgesEcuMhbiOg039+hYxUQQ==
+"@incodetech/welcome@^1.43.0-beta.3":
+  version "1.43.0-beta.3"
+  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.43.0-beta.3.tgz#5acfba601ea3d7ac9d686a9e73205f916f9ed9c1"
+  integrity sha512-T4eMq6WhytkcbzIBOarUFCVjIyrhw1mCESN3aqkA23akGGiBPx6oFuYirJPuurj8iW8t6du0nyUkQBTKC/mpjg==
   dependencies:
     "@fingerprintjs/fingerprintjs-pro" "^3.6.1"
     "@tensorflow/tfjs" "^3.16.0"
@@ -1229,7 +1229,7 @@
     opentok-network-test-js "^2.4.3"
     opentok-react-incode "^0.13.0"
     query-string "^7.1.1"
-    react-hook-form "^7.30.0"
+    react-hook-form "^6.9.2"
     react-modal "^3.14.4"
     react-pdf "^5.7.2"
     react-qr-code "^2.0.5"
@@ -9522,10 +9522,10 @@ react-error-overlay@^6.0.9:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.11.tgz#92835de5841c5cf08ba00ddd2d677b6d17ff9adb"
   integrity sha512-/6UZ2qgEyH2aqzYZgQPxEnz33NJ2gNsnHA2o5+o4wW9bLM/JYQitNP9xPhsXwC08hMMovfGe/8retsdDsczPRg==
 
-react-hook-form@^7.30.0:
-  version "7.30.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.30.0.tgz#c9e2fd54d3627e43bd94bf38ef549df2e80c1371"
-  integrity sha512-DzjiM6o2vtDGNMB9I4yCqW8J21P314SboNG1O0obROkbg7KVS0I7bMtwSdKyapnCPjHgnxc3L7E5PEdISeEUcQ==
+react-hook-form@^6.9.2:
+  version "6.15.8"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.15.8.tgz#725c139d308c431c4611e4b9d85a49f01cfc0e7a"
+  integrity sha512-prq82ofMbnRyj5wqDe8hsTRcdR25jQ+B8KtCS7BLCzjFHAwNuCjRwzPuP4eYLsEBjEIeYd6try+pdLdw0kPkpg==
 
 react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
