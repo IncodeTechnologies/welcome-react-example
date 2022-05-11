@@ -11,8 +11,12 @@ import threeDots from "./imgs/three-dots.svg";
 
 function FrontId({ session, onSuccess, onError }) {
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
     incode.renderCamera("front", containerRef.current, {
       onSuccess,
       onError: onError,
@@ -20,6 +24,8 @@ function FrontId({ session, onSuccess, onError }) {
       numberOfTries: -1,
       showTutorial: true,
     });
+
+    isMounted.current = true;
   }, [onSuccess, onError, session]);
 
   return <div ref={containerRef}></div>;
@@ -27,8 +33,12 @@ function FrontId({ session, onSuccess, onError }) {
 
 function BackId({ session, onSuccess, onError }) {
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
     incode.renderCamera("back", containerRef.current, {
       onSuccess,
       onError: onError,
@@ -36,6 +46,8 @@ function BackId({ session, onSuccess, onError }) {
       numberOfTries: -1,
       showTutorial: true,
     });
+
+    isMounted.current = true;
   }, [onSuccess, onError, session]);
 
   return <div ref={containerRef}></div>;
@@ -53,8 +65,12 @@ function ProcessId({ session, onSuccess }) {
 
 function Selfie({ session, onSuccess, onError }) {
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return false;
+    }
     incode.renderCamera("selfie", containerRef.current, {
       onSuccess,
       onError: onError,
@@ -62,6 +78,7 @@ function Selfie({ session, onSuccess, onError }) {
       numberOfTries: 3,
       showTutorial: true,
     });
+    isMounted.current = true;
   }, [onSuccess, onError, session]);
 
   return <div ref={containerRef}></div>;
@@ -88,8 +105,12 @@ function FaceMatch({ session, onSuccess, onError, liveness, userExists }) {
 function Conference({ session, onSuccess, onError }) {
   const [status, setStatus] = useState();
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
     incode.renderConference(
       containerRef.current,
       {
@@ -106,6 +127,7 @@ function Conference({ session, onSuccess, onError }) {
         onLog: (...params) => console.log("onLog", ...params),
       }
     );
+    isMounted.current = true;
   }, [onSuccess, onError, session]);
 
   if (status) {
@@ -119,8 +141,12 @@ function Conference({ session, onSuccess, onError }) {
 // eslint-disable-next-line no-unused-vars
 function VideoSelfie({ session, onSuccess, onError }) {
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
     incode.renderVideoSelfie(
       containerRef.current,
       {
@@ -139,6 +165,7 @@ function VideoSelfie({ session, onSuccess, onError }) {
         onLog: (...params) => console.log("onLog", ...params),
       }
     );
+    isMounted.current = true;
   }, [onSuccess, onError, session]);
 
   return <div ref={containerRef}></div>;
@@ -212,8 +239,12 @@ function ResetPermissions({ onTryAgain }) {
 
 function RetrySteps({ session, onSuccess, onError, numberOfTries }) {
   const containerRef = useRef();
+  const isMounted = useRef(false);
 
   useEffect(() => {
+    if (isMounted.current) {
+      return;
+    }
     incode.renderRetrySteps(
       containerRef.current,
       {
@@ -225,6 +256,7 @@ function RetrySteps({ session, onSuccess, onError, numberOfTries }) {
         onError,
       }
     );
+    isMounted.current = true;
   }, [onSuccess, onError, session, numberOfTries]);
 
   return <div ref={containerRef}></div>;
