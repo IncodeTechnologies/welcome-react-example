@@ -1243,10 +1243,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   integrity sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==
 
-"@incodetech/welcome@^1.43.3-beta.0":
-  version "1.43.3-beta.0"
-  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.43.3-beta.0.tgz#3b872dbd66bc6e39c1e003841012784b3c194fac"
-  integrity sha512-jexCJk8EEt6AiR+pUkHdkXXesflsWbPjgGzoe6o0l/0OX7HhvChbCNM47M0lfln/N1gh/slQuuLl5shFbRstow==
+"@incodetech/welcome@^1.43.3":
+  version "1.43.3"
+  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.43.3.tgz#ed86edf6e19aa4740791b79609527960cd3fc540"
+  integrity sha512-i2gW80U19XF5DYiQe4XDdM/O3hNwDweqUKWx+0tli2pWeaodEIMHVPTt3Dq4VZO08JpuLwBlf3m4sviWI/TxIg==
   dependencies:
     "@fingerprintjs/fingerprintjs-pro" "^3.6.1"
     "@tensorflow/tfjs" "^3.16.0"
