@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useMemo } from "react";
+import axios from "axios";
 import Steps from "./Steps";
 
 import "./index.css";
@@ -8,6 +9,86 @@ import arrowUp from "./imgs/arrow-up.svg";
 import arrowDown from "./imgs/arrow-down.svg";
 import icons from "./imgs/icons.svg";
 import threeDots from "./imgs/three-dots.svg";
+
+const options = {
+  method: "POST",
+  url: "https://api.conekta.io/tokens",
+  headers: {
+    Authorization: "Basic a2V5X29pR2pnM3M0djk1TjFIZWJrb1hoNEFM",
+    Accept: "application/vnd.conekta-v2.0.0+json",
+    "Content-Type": "application/json",
+  },
+  data: {
+    checkout: {
+      returns_control_on: "Token",
+    },
+  },
+};
+
+function ConektaIframe({ onSuccess }) {
+  useEffect(() => {
+    axios
+      .request(options)
+      .then(function (response) {
+        const res = response.data;
+        window.ConektaCheckoutComponents.Card({
+          targetIFrame: "#conektaIframeContainer",
+          //Este componente "allowTokenization" permite personalizar el tokenizador, por lo que su valor siempre será TRUE
+          allowTokenization: true,
+          checkoutRequestId: res?.checkout?.id, // // Checkout request ID, es el mismo ID generado en el paso 1
+          publicKey: "key_CbrHrpJf8kBeiVAQ1lORzTb", // Llaves: https://developers.conekta.com/docs/como-obtener-tus-api-keys
+          locale: "es", // 'es' Español | 'en' Ingles
+          options: {
+            styles: {
+              // inputType modifica el diseño del Web Checkout Tokenizer
+              //        inputType: 'basic' // 'basic' | 'rounded' | 'line'
+              inputType: "rounded",
+              // buttonType modifica el diseño de los campos de llenado de información del  Web Checkout Tokenizer
+              //        buttonType: 'basic' // 'basic' | 'rounded' | 'sharp'
+              buttonType: "rounded",
+              //Elemento que personaliza el borde de color de los elementos
+              states: {
+                empty: {
+                  borderColor: "#FFAA00", // Código de color hexadecimal para campos vacíos
+                },
+                invalid: {
+                  borderColor: "#FF00E0", // Código de color hexadecimal para campos inválidos
+                },
+                valid: {
+                  borderColor: "#0079c1", // Código de color hexadecimal para campos llenos y válidos
+                },
+              },
+            },
+            //Elemento que personaliza el botón que finzaliza el guardado y tokenización de la tarjeta
+            button: {
+              colorText: "#ffffff", // Código de color hexadecimal para el color de las palabrás en el botón de: Alta de Tarjeta | Add Card
+              //text: 'Agregar Tarjeta***', //Nombre de la acción en el botón ***Se puede personalizar
+              backgroundColor: "#301007", // Código de color hexadecimal para el color del botón de: Alta de Tarjeta | Add Card
+            },
+            //Elemento que personaliza el diseño del iframe
+            iframe: {
+              colorText: "#65A39B", // Código de color hexadecimal para el color de la letra de todos los campos a llenar
+              backgroundColor: "#FFFFFF", // Código de color hexadecimal para el fondo del iframe, generalmente es blanco.
+            },
+          },
+          // Evento que permitirá saber que el token se creao de forma satisfactoria, es importante que se consuman los datos que de él derivan.
+          onCreateTokenSucceeded: function (token) {
+            console.log(token);
+            onSuccess();
+          },
+          // Evento que permitirá saber que el token se creao de manera incorrecta, es importante que se consuman los datos que de él derivan y se hagan las correciones pertinentes.
+          onCreateTokenError: function (error) {
+            console.log(error);
+          },
+        });
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, []);
+
+  return <div id="conektaIframeContainer" style={{ height: "1350px" }}></div>;
+}
 
 function FrontId({ session, onSuccess, onError }) {
   const containerRef = useRef();
@@ -314,6 +395,7 @@ export default function App() {
   if (error) return "Error!";
   return (
     <Steps currentStep={step}>
+      <ConektaIframe onSuccess={goNext} />
       <FrontId session={session} onSuccess={goNext} onError={handleError} />
       <BackId session={session} onSuccess={goNext} onError={handleError} />
       <ProcessId session={session} onSuccess={goNext} />
