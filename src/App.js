@@ -316,7 +316,7 @@ export default function App() {
   return (
     <div
       style={{
-        height: isBig ? "200vh" : undefined,
+        height: isBig ? "calc(100vh + 200px)" : undefined,
       }}
     >
       <Steps currentStep={step}>
