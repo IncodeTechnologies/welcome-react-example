@@ -312,41 +312,48 @@ export default function App() {
     return <ResetPermissions onTryAgain={() => setResetPermissions(false)} />;
   }
   if (error) return "Error!";
+  const isBig = queryParams.get("big") === "true";
   return (
-    <Steps currentStep={step}>
-      <FrontId session={session} onSuccess={goNext} onError={handleError} />
-      <BackId session={session} onSuccess={goNext} onError={handleError} />
-      <ProcessId session={session} onSuccess={goNext} />
-      <Selfie
-        session={session}
-        onSuccess={(res) => {
-          setLiveness(res?.liveness);
-          setUserExists(res?.existingUser);
-          goNext();
-        }}
-        onError={handleError}
-      />
-      <FaceMatch
-        session={session}
-        onSuccess={goNext}
-        liveness={liveness}
-        userExists={userExists}
-      />
-      <RetrySteps
-        session={session}
-        numberOfTries={3}
-        onSuccess={goNext}
-        onError={handleError}
-      />
-      <div>
-        <h1
-          style={{
-            textAlign: "center",
+    <div
+      style={{
+        height: isBig ? "200vh" : undefined,
+      }}
+    >
+      <Steps currentStep={step}>
+        <FrontId session={session} onSuccess={goNext} onError={handleError} />
+        <BackId session={session} onSuccess={goNext} onError={handleError} />
+        <ProcessId session={session} onSuccess={goNext} />
+        <Selfie
+          session={session}
+          onSuccess={(res) => {
+            setLiveness(res?.liveness);
+            setUserExists(res?.existingUser);
+            goNext();
           }}
-        >
-          You finished the onboarding process
-        </h1>
-      </div>
-    </Steps>
+          onError={handleError}
+        />
+        <FaceMatch
+          session={session}
+          onSuccess={goNext}
+          liveness={liveness}
+          userExists={userExists}
+        />
+        <RetrySteps
+          session={session}
+          numberOfTries={3}
+          onSuccess={goNext}
+          onError={handleError}
+        />
+        <div>
+          <h1
+            style={{
+              textAlign: "center",
+            }}
+          >
+            You finished the onboarding process
+          </h1>
+        </div>
+      </Steps>
+    </div>
   );
 }
