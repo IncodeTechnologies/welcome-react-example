@@ -1,6 +1,6 @@
 import { create } from "@incodetech/welcome";
-const apiURL = process.env.REACT_APP_USER_SERVER;
-const clientId = process.env.REACT_APP_CLIENT_ID;
+const apiURL = import.meta.env.VITE_USER_SERVER;
+const clientId = import.meta.env.VITE_CLIENT_ID;
 
 const incode = create({
   clientId: clientId,
