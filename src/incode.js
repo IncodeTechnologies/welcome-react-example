@@ -5,6 +5,7 @@ const clientId = import.meta.env.VITE_CLIENT_ID;
 const incode = OnBoarding.create({
   clientId: clientId,
   apiURL: apiURL,
+  lang: "en",
   translations: {
     tutorial: {
       front1: "Show the front of id",
