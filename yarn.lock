@@ -497,10 +497,10 @@
   dependencies:
     tslib "^2.0.1"
 
-"@incodetech/welcome@^1.54.0":
-  version "1.54.0"
-  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.54.0.tgz#3120865d67396ee85a7e1a9a673abbc710e1a8ed"
-  integrity sha512-hoXXlMyGeFMboEHokqVDR4ZfiBd1JV/CEIkmRPRdsUC+mHcrJqdeM8+GNYcQ2gl+QFBnzga1ixdIwsk8YRhvGQ==
+"@incodetech/welcome@^1.54.1":
+  version "1.54.1"
+  resolved "https://registry.yarnpkg.com/@incodetech/welcome/-/welcome-1.54.1.tgz#c5b25e8bd6a70d70c9700b82cd8fd794f80d8fc7"
+  integrity sha512-bcxIpDyRwGqxrJzoU+fHU+G7l7EM/jQIX4TPi8foaxO5I5ZARVjs2p4b6CmfbZKDP8e2Jv5eLqb2W4CJcsM11g==
   dependencies:
     "@fingerprintjs/fingerprintjs-pro" "^3.6.1"
     "@tensorflow/tfjs" "^3.16.0"
