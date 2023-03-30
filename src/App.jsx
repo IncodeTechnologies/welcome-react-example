@@ -23,6 +23,8 @@ function FrontId({ session, onSuccess, onError }) {
       token: session,
       numberOfTries: -1,
       showTutorial: true,
+      showCustomCameraPermissionScreen: true,
+      showDoublePermissionsRequest: true,
     });
 
     isMounted.current = true;
@@ -45,6 +47,8 @@ function BackId({ session, onSuccess, onError }) {
       token: session,
       numberOfTries: -1,
       showTutorial: true,
+      showCustomCameraPermissionScreen: true,
+      showDoublePermissionsRequest: true,
     });
 
     isMounted.current = true;
@@ -77,6 +81,8 @@ function Selfie({ session, onSuccess, onError }) {
       token: session,
       numberOfTries: 3,
       showTutorial: true,
+      showCustomCameraPermissionScreen: true,
+      showDoublePermissionsRequest: true,
     });
     isMounted.current = true;
   }, [onSuccess, onError, session]);
