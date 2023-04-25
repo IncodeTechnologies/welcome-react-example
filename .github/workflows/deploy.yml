@@ -9,9 +9,8 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      REACT_APP_USER_SERVER: https://demo-api.incodesmile.com
-      REACT_APP_CLIENT_ID: incode
-      REACT_APP_SDK_URL: https://sdk.incode.com/sdk/onBoarding-1.42.0.js
+      VITE_USER_SERVER: https://demo-api.incodesmile.com
+      VITE_CLIENT_ID: incode
 
     steps:
       - uses: actions/checkout@v2
