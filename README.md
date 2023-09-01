@@ -27,7 +27,7 @@ yarn
 or
 
 ```
-npm install
+npm install --legacy-peer-deps
 ```
 
 ### Add env variables

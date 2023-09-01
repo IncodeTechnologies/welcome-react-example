@@ -73,7 +73,7 @@ function Selfie({ session, onSuccess, onError }) {
 
   useEffect(() => {
     if (isMounted.current) {
-      return false;
+      return;
     }
     incode.renderCamera("selfie", containerRef.current, {
       onSuccess,

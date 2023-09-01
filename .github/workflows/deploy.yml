@@ -9,8 +9,9 @@ jobs:
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      VITE_USER_SERVER: https://demo-api.incodesmile.com
-      VITE_CLIENT_ID: incode
+      VITE_INCODE_API_URL: https://demo-api.incodesmile.com
+      VITE_INCODE_CLIENT_ID: incode
+      VITE_INCODE_SDK_URL: https://sdk.incode.com/sdk/onBoarding-1.57.0.js
 
     steps:
       - uses: actions/checkout@v2
