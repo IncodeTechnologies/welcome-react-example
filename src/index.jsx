@@ -1,7 +1,7 @@
 import React from "react";
-import { createRoot } from "react-dom/client";
-import "./index.css";
+import ReactDOM from "react-dom";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./index.css";
 
 import App from "./App";
 import AppWithStyles from "./AppWithStyles";
@@ -18,9 +18,10 @@ const router = createBrowserRouter([
 ]);
 
 const container = document.getElementById("root");
-const root = createRoot(container);
-root.render(
+
+ReactDOM.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </React.StrictMode>,
+  container
 );
